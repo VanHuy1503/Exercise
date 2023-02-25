@@ -1,0 +1,117 @@
+.sidebar {
+    background-color: #041434;
+    float: left;
+    width: 200px;
+    height: 100vh;
+}
+
+.sidebar__header {
+    height: 56px;
+    display: flex;
+    align-items: center;
+    color: #fff;
+}
+
+.ninedot {
+    margin: 0 16px;
+    background: url(/assets/img/Sprites.64af8f61.svg) no-repeat -424px -86px;
+}
+
+.logo {
+    height: 32px;
+}
+
+i {
+    display: block;
+    width: 24px;
+    height: 24px;
+}
+
+.sidebar__list{
+    padding: 16px 12px 0;
+    box-sizing: border-box;
+    overflow-y: overlay;
+    height: calc(100vh - 56px);
+}
+
+.sidebar__item{
+    display: flex;
+    width: 100%;
+    color: #fff;
+    font-size: 14px;
+    align-items: center;
+    height: 44px;
+    border-radius: 4px;
+    padding: 0 0 0 12px;
+    margin-top: 4px;
+    box-sizing: border-box;
+    column-gap: 12px;
+}
+
+.sidebar__item--selected{
+    background-color: #d4d7dc3c;
+}
+
+.sidebar__item:hover{
+    background-color: #27395E;
+}
+
+.sidebar__item>.item-1{
+    background: url(/assets/img/Sprites.64af8f61.svg) no-repeat -30px -1628px;
+}
+
+.sidebar__item>.item-2{
+    background: url(/assets/img/Sprites.64af8f61.svg) no-repeat -73px -1628px;
+}
+
+.sidebar__item>.item-3{
+    background: url(/assets/img/Sprites.64af8f61.svg) no-repeat -117px -1628px;
+}
+
+.sidebar__item>.item-4{
+    background: url(/assets/img/Sprites.64af8f61.svg) no-repeat -161px -1628px;
+}
+
+.sidebar__item>.item-5{
+    background: url(/assets/img/Sprites.64af8f61.svg) no-repeat -204px -1628px;
+}
+
+.sidebar__item>.item-6{
+    background: url(/assets/img/Sprites.64af8f61.svg) no-repeat -249px -1628px;
+}
+
+.sidebar__item>.item-7{
+    background: url(/assets/img/Sprites.64af8f61.svg) no-repeat -291px -1628px;
+}
+
+.sidebar__item>.item-8{
+    background: url(/assets/img/Sprites.64af8f61.svg) no-repeat -335px -1630px;
+}
+
+.sidebar__item>.item-9{
+    background: url(/assets/img/Sprites.64af8f61.svg) no-repeat -378px -1630px;
+}
+
+.sidebar__item>.item-10{
+    background: url(/assets/img/Sprites.64af8f61.svg) no-repeat -423px -1630px;
+}
+
+.sidebar__item>.item-11{
+    background: url(/assets/img/Sprites.64af8f61.svg) no-repeat -467px -1628px;
+}
+
+.sidebar__item>.item-12{
+    background: url(/assets/img/Sprites.64af8f61.svg) no-repeat -510px -1628px;
+}
+
+.sidebar__item>.item-13{
+    background: url(/assets/img/Sprites.64af8f61.svg) no-repeat -378px -1660px;
+}
+
+.sidebar__item>.item-14{
+    background: url(/assets/img/Sprites.64af8f61.svg) no-repeat -547px -1628px;
+}
+
+.sidebar__item>.item-15{
+    background: url(/assets/img/Sprites.64af8f61.svg) no-repeat -204px -1662px;
+}

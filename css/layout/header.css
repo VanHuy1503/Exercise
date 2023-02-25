@@ -1,0 +1,53 @@
+
+.header{
+    width: 100%;
+    height: 56px;
+    display: flex;
+    justify-content: space-between;
+    align-self: center;
+}
+
+.header-left{
+    margin-left: 16px;
+    display: flex;
+    align-items: center;
+    column-gap: 16px;
+}
+
+.header-right{
+    margin-right: 16px;
+    display: flex;
+    align-items: center;
+    column-gap: 24px;
+}
+
+.threelines{
+    background: url(/assets/img/Sprites.64af8f61.svg) no-repeat -842px -30px;
+}
+
+.header-title {
+    display: flex;
+    align-items: center;
+}
+
+.bill{
+    background: url(/assets/img/Sprites.64af8f61.svg) no-repeat -787px -30px;
+}
+
+.avt{
+    background: url(/assets/img/Sprites.64af8f61.svg) no-repeat -352px -894px;
+	width: 32px;
+	height: 32px;
+    border-radius: 50%;
+}
+
+.arrow-down{
+    background: url(/assets/img/Sprites.64af8f61.svg) no-repeat -1124px -357px;
+    display: inline-block;
+}
+
+.header__account{
+    display: flex;
+    align-items: center;
+    column-gap: 4px;
+}

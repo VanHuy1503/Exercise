@@ -1,0 +1,7 @@
+{
+    "prettier.tabWidth": 4,
+    "prettier.printWidth": 1000,
+    "prettier.bracketSameLine": true,
+    "editor.fontFamily": "FiraCode-Retina",
+    "editor.fontLigatures": true,
+}   

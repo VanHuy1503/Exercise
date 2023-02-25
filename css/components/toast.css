@@ -1,0 +1,99 @@
+.toast{
+    position: fixed;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    row-gap: 8px;
+}
+
+.toast__container{
+    min-width: 450px;
+    max-width: 650px;
+    display: flex;
+    align-items: center;
+    column-gap: 8px;
+    background-color: #fff;
+    border-radius: 4px;
+    padding: 20px 48px;
+    box-sizing: border-box;
+    position: relative;
+}
+
+.toast__icon{
+    position: absolute;
+    top:16px;
+    left: 16px;
+}
+
+.toast--success .toast__icon{
+    background: url(/assets/img/Sprites.64af8f61.svg) no-repeat -1600px -256px;
+	width: 24px;
+	height: 24px;
+}
+
+.toast--warning .toast__icon{
+    background: url(/assets/img/icon-warning.png);
+	width: 24px;
+	height: 24px;
+}
+
+.toast--info .toast__icon{
+    background: url(/assets/img/icon-info.svg);
+    width: 24px;
+    height: 24px;
+}
+
+.toast--error .toast__icon{
+    background: url(/assets/img/icon-error.svg);
+    width: 24px;
+    height: 24px;
+}
+
+.toast__body-text{
+    flex: 1;
+}
+
+.toast__title{
+    font-weight: 700;
+    display: inline-block;
+}
+
+.toast--error .toast__title{
+    color: #DE3618;
+}
+
+.toast--success .toast__title{
+    color: #50B83C;
+}
+
+.toast--warning .toast__title{
+    color: #F49342;
+}
+
+.toast--info .toast__title{
+    color: #2680EB;
+}
+
+.toast__body-text{
+    font-weight: 400;
+}
+
+.toast__action>a{
+    font-size: 14px;
+    line-height: 17px;
+    font-weight: 500;
+    color: #1F1F1F;
+}
+
+.toast__close{
+    background: url(/assets/img/Sprites.64af8f61.svg) no-repeat -1176px -360px;
+	width: 16px;
+	height: 16px;
+    box-sizing: border-box;
+    border: none;
+    position: absolute;
+    right: 16px;
+    cursor: pointer;
+}

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/css/components/toast.css">
+    <link rel="stylesheet" href="/css/main.css">
+    <style>
+        body{
+            background-color: aquamarine;
+        }
+    </style>
+</head>
+<body>
+    <div class="toast">
+        <div class="toast--success">
+            <div class="toast__container">
+                <div class="toast__icon"></div>
+                <div class="toast__title">Thành công!</div>
+                <div class="toast__body-text">Thêm nhân viên thành công.</div>
+                <div class="toast__action">
+                    <a href="">Hoàn tác</a>
+                </div>
+                <input class="toast__close" type="button" value="">
+            </div>
+        </div>
+        <div class="toast--warning">
+            <div class="toast__container">
+                <div class="toast__icon"></div>
+                <div class="toast__body-text">
+                    <span class="toast__title">Cảnh báo!</span>
+                    Dữ liệu của bạn đã bị thay đổi bởi người dùng khác.
+                </div>
+                <div class="toast__action">
+                    <a href="">Hoàn tác</a>
+                </div>
+                <input class="toast__close" type="button" value="">
+            </div>
+        </div>
+        <div class="toast--info">
+            <div class="toast__container">
+                <div class="toast__icon"></div>
+                <div class="toast__body-text">
+                    <span class="toast__title">Thông tin!</span>
+                    Bạn nên đọc nội dung trước khi gửi phê duyệt.
+                </div>
+                <input class="toast__close" type="button" value="">
+            </div>
+        </div>
+        <div class="toast--error">
+            <div class="toast__container">
+                <div class="toast__icon"></div>
+                <div class="toast__body-text">
+                    <span class="toast__title">Lỗi!</span>
+                    Đây là lỗi.
+                    <span class="toast__action">
+                        <a href="">Xem hướng dẫn</a>
+                    </span>
+                </div>
+                <input class="toast__close" type="button" value="">
+            </div>
+        </div>
+    </div>
+</body>
+</html>

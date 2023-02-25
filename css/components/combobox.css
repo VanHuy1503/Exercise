@@ -1,0 +1,88 @@
+/* <div class="combobox">
+    <div class="combobox__select">20 bản ghi trên 1 trang</div>
+    <ul class="options hide">
+        <li class="option">option 1</li>
+        <li class="option">option 2</li>
+        <li class="option">option 3</li>
+        <li class="option">option 4</li>
+    </ul>
+    <div class="combobox__btn">
+        <img src="/assets/img/arrow-down.png"></img>
+    </div>
+</div> */
+
+.combobox {
+    position: relative;
+    width: 100%;
+}
+
+.combobox__select {
+    height: 36px;
+    font-size: 14px;
+    line-height: 36px;
+    border-radius: 2px;
+    width: 100%;
+    border: 1px solid #ccc;
+    padding-left: 10px;
+    background-color: #fff;
+    box-sizing: border-box;
+}
+
+.options {
+    width: 100%;
+    position: absolute;
+    box-sizing: border-box;
+    border-radius: 2px;
+    background-color: #fff;
+    padding: 0;
+    border: 8px solid #fff;
+    height: 112px;
+    animation: showSelect step-end 0.3s;
+    overflow: auto;
+    box-sizing: border-box;
+    box-shadow: 0 0 4px rgba(23, 27, 42, 0.24);
+}
+
+.paging__combobox .options {
+    bottom: 40px;
+}
+
+.combobox ul li {
+    list-style: none;
+    height: 32px;
+    font-size: 14px;
+    line-height: 36px;
+    padding-left: 8px;
+}
+
+.combobox ul li:hover {
+    background-color: #2d9e1c;
+    color: #fff;
+    cursor: pointer;
+}
+
+@keyframes showComboboxSelect {
+    from {
+        transform: scale(0);
+    }
+    to {
+        transform: scale(1);
+    }
+}
+
+.combobox__btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    cursor: pointer;
+    top: 1.5px;
+    right: 0.5px;
+    background-color: #ccc;
+    height: 34px;
+    width: 34px;
+}
+
+.combobox__btn img {
+    width: 16px;
+}

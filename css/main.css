@@ -1,0 +1,80 @@
+/*Lay out*/
+@import url(./layout/header.css);
+@import url(./layout/content.css);
+@import url(./layout/sidebar.css);
+@import url(./layout/datatables.css);
+
+/* Components */
+@import url(./components/icons.css);
+@import url(./components/button.css);
+@import url(./components/textfield.css);
+@import url(./components/combobox.css);
+@import url(./components/dropdownlist.css);
+@import url(./components/popup.css);
+@import url(./components/toast.css);
+@import url(./components/scrollbar.css);
+@import url(./components/checkbox.css);
+
+@font-face {
+    font-family: Roboto;
+    src: url(/assets/fonts/Roboto-Regular.woff2);
+}
+
+* {
+    margin: 0;
+    font-family: Roboto;
+    font-size: 14px;
+    box-sizing: border-box;
+}
+
+.right {
+    float: left;
+    width: calc(100% - 200px);
+    height: 100vh;
+}
+
+
+
+.btn-arrow-down {
+    border: none;
+    background: url(/assets/img/Sprites.64af8f61.svg) no-repeat -892px -355px;
+    width: 24px;
+    height: 24px;
+}
+
+.color-red {
+    color: red !important;
+}
+
+.warning-icon {
+    background: url(/assets/img/Sprites.64af8f61.svg) no-repeat -598px -463px;
+    float: left;
+    width: 36px;
+    height: 37px;
+    margin-right: 12px;
+}
+
+.text-align--center {
+    text-align: center;
+}
+
+.text-align--right {
+    text-align: right;
+}
+
+.flex-wrap {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.hidden {
+    visibility: hidden;
+}
+
+.border-focus {
+    border-color: #5dc748;
+}
+
+.border-blue {
+    border: 1px solid #0075c0;
+}

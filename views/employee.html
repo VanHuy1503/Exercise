@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Kế toán</title>
+    <link rel="icon" href="/assets/img/favicon.ico">
+    <link rel="stylesheet" href="/css/main.css" />
+    <link rel="stylesheet" href="/css/views/employee.css" />
+</head>
+
+<body>
+    <div class="container">
+        <div class="sidebar">
+            <div class="sidebar__header">
+                <div class="ninedot icon"></div>
+                <img class="logo" src="/assets/img/Logo_Module_TiengViet_White.66947422.svg" alt="" />
+            </div>
+            <div class="sidebar__list">
+                <div class="sidebar__item sidebar__item--selected">
+                    <i class="item-1"></i>
+                    <p>Tổng quan</p>
+                </div>
+                <div class="sidebar__item">
+                    <i class="item-2"></i>
+                    <p>Tiền mặt</p>
+                </div>
+                <div class="sidebar__item">
+                    <i class="item-3"></i>
+                    <p>Tiền gửi</p>
+                </div>
+                <div class="sidebar__item">
+                    <i class="item-4"></i>
+                    <p>Mua hàng</p>
+                </div>
+                <div class="sidebar__item">
+                    <i class="item-5"></i>
+                    <p>Bán hàng</p>
+                </div>
+                <div class="sidebar__item">
+                    <i class="item-6"></i>
+                    <p>Quản lý hóa đơn</p>
+                </div>
+                <div class="sidebar__item">
+                    <i class="item-7"></i>
+                    <p>Kho</p>
+                </div>
+                <div class="sidebar__item">
+                    <i class="item-8"></i>
+                    <p>Công cụ dụng cụ</p>
+                </div>
+                <div class="sidebar__item">
+                    <i class="item-9"></i>
+                    <p>Tài sản cố định</p>
+                </div>
+                <div class="sidebar__item">
+                    <i class="item-10"></i>
+                    <p>Thuế</p>
+                </div>
+                <div class="sidebar__item">
+                    <i class="item-11"></i>
+                    <p>Giá thành</p>
+                </div>
+                <div class="sidebar__item">
+                    <i class="item-12"></i>
+                    <p>Tổng hợp</p>
+                </div>
+                <div class="sidebar__item">
+                    <i class="item-13"></i>
+                    <p>Ngân sách</p>
+                </div>
+                <div class="sidebar__item">
+                    <i class="item-14"></i>
+                    <p>Báo cáo</p>
+                </div>
+                <div class="sidebar__item">
+                    <i class="item-15"></i>
+                    <p>Phân tích tài chính</p>
+                </div>
+            </div>
+        </div>
+        <div class="right">
+            <div class="header">
+                <div class="header-left">
+                    <div class="threelines icon"></div>
+                    <div class="header-title">
+                        <div>CÔNG TY TNHH SẢN XUẤT - THƯƠNG MẠI - DỊCH VỤ QUÍ PHÚC</div>
+                        <div class="icon arrow-down"></div>
+                    </div>
+                </div>
+                <div class="header-right">
+                    <div class="bill icon"></div>
+                    <div class="header__account">
+                        <div class="avt"></div>
+                        <p>Nguyễn Văn Mạnh</p>
+                        <div class="icon arrow-down"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="content">
+                <div class="content__title">
+                    <b>Nhân viên</b>
+                    <input id="btnAddEmployee" class="btn-pri" type="button" value="Thêm mới nhân viên" />
+                </div>
+                <div class="content__body">
+                    <div class="table__top">
+                        <div class="searchbox">
+                            <input type="text" placeholder="Tìm theo mã, tên nhân viên" />
+                            <div class="search-icon"></div>
+                        </div>
+                        <input class="btn-refresh" type="button" value="" />
+                    </div>
+                    <div class="content__table">
+                        <table id="tbEmployeeList" class="datatables">
+                            <thead class="table__title">
+                                <th type="checkbox">
+                                    <div class="checkbox">
+                                        <input id="ckbAllEmp" type="checkbox" />
+                                        <span class="checkmark"></span>
+                                    </div>
+                                </th>
+                                <th model-name="EmployeeCode">MÃ NHÂN VIÊN</th>
+                                <th model-name="FullName">TÊN NHÂN VIÊN</th>
+                                <th model-name="GenderName">GIỚI TÍNH</th>
+                                <th model-name="DateOfBirth" type="date" class="text-align--center">NGÀY SINH</th>
+                                <th model-name="IdentityNumber" title="Số chứng minh nhân dân">SỐ CMND</th>
+                                <th model-name="PositionName">CHỨC DANH</th>
+                                <th model-name="DepartmentName">TÊN ĐƠN VỊ</th>
+                                <th model-name="Salary" type="money" class="text-align--right">LƯƠNG</th>
+                                <!-- <th model-name="">SỐ TÀI KHOẢN</th>
+                                <th model-name="">TÊN NGÂN HÀNG</th>
+                                <th model-name="" title="Chi nhánh tài khoản ngân hàng">CHI NHÁNH TK NGÂN HÀNG</th> -->
+                                <th model-name="" type="function">CHỨC NĂNG</th>
+                            </thead>
+                            <tbody class="table__content">
+                                <!-- <tr class="table__row">
+                                    <td>
+                                        <div class="checkbox">
+                                            <input type="checkbox" name="emp" />
+                                            <span class="checkmark"></span>
+                                        </div>
+                                    </td>
+                                    <td>00012</td>
+                                    <td>Nguyễn Văn Liệt</td>
+                                    <td>Nam</td>
+                                    <td class="text-align-center">31/12/1969</td>
+                                    <td>362520865</td>
+                                    <td>Trưởng Nhóm</td>
+                                    <td>Xay Keo - Phối Trộn</td>
+                                    <td></td>
+                                    <td>
+                                        <input class="btn-link btn-edit" type="button" value="Sửa" />
+                                        <input class="btn-arrow-down" type="button" value="" />
+                                    </td>
+                                </tr> -->
+                            </tbody>
+                        </table>
+                        <div class="bgdroplist hidden">
+                            <div class="dropdownlist hidden">
+                                <ul>
+                                    <li><input class="btn-link" type="button" value="Nhân bản" /></li>
+                                    <li><input class="btn-link" type="button" value="Xóa" /></li>
+                                    <li><input class="btn-link" type="button" value="Ngừng sử dụng" /></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="paging">
+                        <div class="paging__left">Tổng số: <b>1035</b> bản ghi</div>
+                        <div class="paging__right">
+                            <div class="combobox paging__combobox">
+                                <div class="combobox__select">20 bản ghi trên 1 trang</div>
+                                <ul class="options hidden">
+                                    <li class="option">10 bản ghi trên 1 trang</li>
+                                    <li class="option">20 bản ghi trên 1 trang</li>
+                                    <li class="option">30 bản ghi trên 1 trang</li>
+                                    <li class="option">50 bản ghi trên 1 trang</li>
+                                    <li class="option">100 bản ghi trên 1 trang</li>
+                                </ul>
+                                <div class="combobox__btn">
+                                    <img src="/assets/img/arrow_icon.png" alt="" />
+                                </div>
+                            </div>
+                            <input class="btn-link--disable" type="button" value="Trước" />
+                            <input class="btn-link--selected" type="button" value="1" />
+                            <input class="btn-link" type="button" value="2" />
+                            <input class="btn-link" type="button" value="3" />
+                            <input class="btn-link" type="button" value="..." />
+                            <input class="btn-link" type="button" value="52" />
+                            <input class="btn-link" type="button" value="Sau" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div>
+        <div id="formEmployeeDetail" class="popup-add-employee" hidden>
+            <div class="shadow"></div>
+            <div class="popup">
+                <div class="icon popup__btn-help"></div>
+                <input id="btnClose" class="icon popup__btn-close" type="button" value="" />
+                <div class="popup__title">
+                    <div class="popup__title-text">Thông tin nhân viên</div>
+                    <div class="checkbox">
+                        <input id="isu" type="checkbox" />
+                        <span class="checkmark"></span>
+                    </div>
+                    <label for="isu">Là khách hàng</label>
+                    <div class="checkbox">
+                        <input id="isn" type="checkbox" />
+                        <span class="checkmark"></span>
+                    </div>
+                    <label for="isn">Là nhà cung cấp</label>
+                </div>
+                <div class="popup__content">
+                    <div class="form-info">
+                        <div class="form-group form-info-left">
+                            <div class="m-row">
+                                <div class="textfield">
+                                    <label for="txtEmployeeCode">Mã <span class="color-red">*</span></label>
+                                    <input id="txtEmployeeCode" class="required" type="text"
+                                        placeholder="Mã nhân viên" />
+                                </div>
+                                <div class="textfield">
+                                    <label for="txtFullName">Tên <span class="color-red">*</span></label>
+                                    <input id="txtFullName" class="required" type="text" placeholder="Tên" />
+                                </div>
+                            </div>
+                            <div class="textfield">
+                                <label for="txtDepartment">Đơn vị <span class="color-red">*</span></label>
+                                <div class="combobox">
+                                    <div class="combobox__select">Phòng nhân sự</div>
+                                    <ul class="options hidden">
+                                        <li class="option">Phòng nhân sự</li>
+                                        <li class="option">Phòng hành chính</li>
+                                        <li class="option">Phòng kế toán</li>
+                                        <li class="option">Phòng sản xuất</li>
+                                    </ul>
+                                    <div class="combobox__btn">
+                                        <img src="/assets/img/arrow_icon.png" />
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="textfield">
+                                <label for="txtPosition">Chức danh</label>
+                                <input id="txtPosition" type="text" placeholder="Chức danh" />
+                            </div>
+                        </div>
+                        <div class="form-group form-info-right">
+                            <div class="m-row">
+                                <div class="textfield">
+                                    <label for="dateOfBirth">Ngày sinh</label>
+                                    <input id="dateOfBirth" type="date" />
+                                </div>
+                                <div class="textfield item-gt">
+                                    <label for="radioGender">Giới tính</label>
+                                    <div id="radioGender" class="btn-radio">
+                                        <div class="btn-radio__option">
+                                            <input type="radio" name="gender" value="Nam" checked />
+                                            <p>Nam</p>
+                                        </div>
+                                        <div class="btn-radio__option">
+                                            <input type="radio" name="gender" />
+                                            <p>Nữ</p>
+                                        </div>
+                                        <div class="btn-radio__option">
+                                            <input type="radio" name="gender" />
+                                            <p>Khác</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="second-row">
+                                <div>
+                                    <div class="textfield">
+                                        <label for="txtIdentityCard" title="Số chứng minh nhân dân">Số CMND</label>
+                                        <input id="txtIdentityCard" type="text" placeholder="Số CMND" />
+                                    </div>
+                                </div>
+                                <div class="textfield">
+                                    <label for="dateOfIssue">Ngày cấp</label>
+                                    <input id="dateOfIssue" type="date" name="" id="" />
+                                </div>
+                            </div>
+                            <div class="textfield">
+                                <label for="txtIssuePlace">Nơi cấp</label>
+                                <input id="txtIssuePlace" type="text" placeholder="Nơi cấp " />
+                            </div>
+                        </div>
+                        <div class="form-group form-info-bottom">
+                            <div class="form-group-row">
+                                <div class="textfield">
+                                    <label for="txtAddress">Địa chỉ</label>
+                                    <input id="txtAddress" type="text" placeholder="Địa chỉ" />
+                                </div>
+                            </div>
+                            <div class="form-group-row">
+                                <div class="item-contact">
+                                    <div class="textfield">
+                                        <label for="txtMobilePhone" title="Số điện thoại di động">ĐT di động</label>
+                                        <input id="txtMobilePhone" type="text" placeholder="Đt di động" />
+                                    </div>
+                                </div>
+                                <div class="item-contact">
+                                    <div class="textfield">
+                                        <label for="txtLandlinePhone" title="Số điện thoại cố định">ĐT cố định</label>
+                                        <input id="txtLandlinePhone" type="text" placeholder="ĐT cố định" />
+                                    </div>
+                                </div>
+                                <div class="item-contact">
+                                    <div class="textfield">
+                                        <label for="txtEmail">Email</label>
+                                        <input id="txtEmail" type="text" placeholder="Email" />
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group-row">
+                                <div class="item-contact">
+                                    <div class="textfield">
+                                        <label for="txtBankAccount">Tài khoản ngân hàng</label>
+                                        <input id="txtBankAccount" type="text" placeholder="Tài khoản ngân hàng" />
+                                    </div>
+                                </div>
+                                <div class="item-contact">
+                                    <div class="textfield">
+                                        <label for="txtBankName">Tên ngân hàng</label>
+                                        <input id="txtBankName" type="text" placeholder="Tên ngân hàng" />
+                                    </div>
+                                </div>
+                                <div class="item-contact">
+                                    <div class="textfield">
+                                        <label for="txtBranch">Chi nhánh</label>
+                                        <input id="txtBranch" type="text" placeholder="Chi nhánh" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="popup__footer">
+                    <div>
+                        <input id="btnStore" type="button" class="btn-sub" value="Cất" />
+                        <input id="btnStoreAndAdd" type="button" class="btn-pri" value="Cất và Thêm" />
+                    </div>
+                    <div>
+                        <input id="btnCancel" class="btn-sub" type="button" value="Hủy" />
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="popup-warning" hidden>
+            <div class="shadow"></div>
+            <div class="popup">
+                <div class="popup__content">
+                    <div class="popup__text">
+                        <div class="icon warning-icon"></div>
+                        <p>Mã nhân viên &ltNV-0001&gt đã tồn tại trong hệ thống, vui lòng kiểm tra lại.</p>
+                    </div>
+                </div>
+                <div class="popup__footer">
+                    <div class="btn-pri">Đồng ý</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script type="module" src="/js/employee.js"></script>
+    <script src="/js/combobox.js"></script>
+</body>
+
+</html>

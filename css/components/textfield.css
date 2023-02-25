@@ -1,0 +1,40 @@
+.textfield{
+    width: 100%;
+}
+
+.textfield>label{
+    font-weight: 700;
+    min-height: 19px;
+    display: block;
+    padding-bottom: 8px;
+}
+
+.textfield>input{
+    border-radius: 4px;
+    padding-left: 12px;
+    padding-right: 8px;
+    height: 36px;
+    border: 1px solid #E0E0E0;
+    outline: none;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+
+.textfield>input:focus{
+	border: 1px solid #50b83c;
+}
+
+.textfield p{
+    display: inline-block;
+}
+
+.error-element>input{
+    border-color: #E61D1D;
+}
+
+.error-element>.error-message{
+    font-size: 12px ;
+    margin-top: 8px;
+    color: #E61D1D;
+}
