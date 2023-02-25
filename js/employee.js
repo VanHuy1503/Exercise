@@ -224,10 +224,14 @@ class EmployeePage {
                     let tdElement = this.buildTd(type, value, item);
                     trElement.append(tdElement);
                 }
-                trElement.ondblclick = () =>
-                    this.displayEditEmployeeForm(item);
+                trElement.ondblclick = (e) => {
+                    if (e.target.tagName.toLowerCase() != "input") {
+                        this.displayEditEmployeeForm(item);
+                    }
+                }
                 bodyTable.append(trElement);
             }
+            this.addEventForDropList();
         } catch (error) {
             console.log(error);
         }
@@ -260,7 +264,6 @@ class EmployeePage {
         let btndropdown = document.createElement("input");
         btndropdown.type = "button";
         btndropdown.classList.add("btn-arrow-down")
-        btndropdown.addEventListener("click", this.addEventForDropList);
         tdFunc.append(btnEdit);
         tdFunc.append(btndropdown);
 
@@ -268,22 +271,64 @@ class EmployeePage {
             this.displayEditEmployeeForm(item);
         return tdFunc;
     }
-
+    // Thêm sự kiện cho nút chức năng
     addEventForDropList() {
-        document.querySelectorAll(".btn-arrow-down").forEach(function (el) {
-            el.onclick = function () {
-                let input = event.currentTarget;
-                let dropList = document.querySelector(".dropdownlist");
-                dropList.classList.toggle("hidden");
-                let local = input.getBoundingClientRect();
-                if (local.bottom < 600) {
-                    dropList.style.top = local.bottom + "px";
+        let dropList = document.querySelector(".dropdownlist");
+
+        document.addEventListener("click", (e) => {
+            //Lấy phần tử được bấm
+            let input = e.target;
+            //Lấy phần tử dropdownlist đang được hiển thị
+            let dropSelectedElement = document.querySelector(".border-drop-icon");
+            //Lấy vị trí nút bấm
+            let local = input.getBoundingClientRect();
+
+            if (input.classList.contains("btn-arrow-down")) {
+                //Kiểm tra đã hiển thị dropdownlist chưa
+                if (!dropSelectedElement) {
+                    // Nếu chưa hiển thị dropdown thì hiển thị
+                    if (local.bottom < 600) {
+                        dropList.style.top = local.bottom + "px";
+                    } else {
+                        dropList.style.top = local.top - 112 + "px";
+                    }
+                    //Thêm border cho nút đang chọn và hiển thị
+                    input.classList.add("border-drop-icon");
+                    dropList.classList.remove("hidden");
+
+                } else if (dropSelectedElement == input) { //Nếu bấm vào nút đang chọn thì tắt droplist
+                    dropSelectedElement.classList.remove("border-drop-icon");
+                    dropList.classList.add("hidden")
                 } else {
-                    dropList.style.top = local.top - 112 + "px";
+                    //Nếu đã có drop và người dùng bấm vào nút drop khác
+                    //xóa border cũ thêm border cho nút mới
+                    dropSelectedElement.classList.remove("border-drop-icon");
+                    input.classList.add("border-drop-icon");
+                    //Thay đổi vị trí droplist
+                    if (local.bottom < 600) {
+                        dropList.style.top = local.bottom + "px";
+                    } else {
+                        dropList.style.top = local.top - 112 + "px";
+                    }
                 }
-            };
-        });
+            }
+            else { //Nếu đang mở droplist bấm ra ngoài ẩn droplist
+                do {
+                    if (input == dropList) {
+                        console.log("add1")
+                        return;
+                    }
+                    input = input.parentNode;
+                } while (input)
+                if (!dropList.classList.contains("hidden")) {
+                    dropSelectedElement.classList.remove("border-drop-icon");
+                    dropList.classList.add("hidden")
+                }
+            }
+
+        })
     }
+
 
     //Tạo thẻ ngày
     buildTdDate(value) {
@@ -335,24 +380,6 @@ class EmployeePage {
                 }
         }
     }
-
-    addEventForDropList() {
-        document.querySelectorAll(".btn-arrow-down").forEach(function (el) {
-            el.onclick = function () {
-                let input = event.currentTarget;
-                let dropList = document.querySelector(".dropdownlist");
-                dropList.classList.toggle("hidden");
-                document.querySelector(".bgdroplist").classList.toggle("hidden");
-                let local = input.getBoundingClientRect();
-                if (local.bottom < 600) {
-                    dropList.style.top = local.bottom + "px";
-                } else {
-                    dropList.style.top = local.top - 112 + "px";
-                }
-            };
-        });
-    }
-
     addEventForTdCheck() {
         let checkAll = document.getElementById("ckbAllEmp");
         let checkboxes = document.getElementsByName("emp");
@@ -379,12 +406,47 @@ class EmployeePage {
         })
     }
     displayEditEmployeeForm(item) {
+        //Hiển thị form sửa
         let form = document.getElementById("formEmployeeDetail").style.display = "block";
+
+        //Gán giá trị cho các ô nhập
         document.querySelector("#formEmployeeDetail .popup__title-text").textContent = "Sửa thông tin nhân viên";
         document.getElementById("txtEmployeeCode").value = item["EmployeeCode"];
         document.getElementById("txtEmployeeCode").disabled = true;
         document.getElementById("txtFullName").value = item["FullName"];
+        document.getElementById("txtIdentityCard").value = item["IdentityNumber"];
+        document.getElementById("txtPosition").value = item["PositionName"];
+        document.getElementById("txtIssuePlace").value = item["IdentityPlace"];
+        document.getElementById("txtAddress").value = item["Address"];
+        document.getElementById("txtMobilePhone").value = item["PhoneNumber"];
+        document.getElementById("txtEmail").value = item["Email"];
+        document.getElementById("cbbDepartment").textContent = item["DepartmentName"];
+        document.getElementById("btnStoreAndAdd").value = "Cất và Sửa";
+        // document.getElementById("txtLandlinePhone").value = item[""];
+        // document.getElementById("txtBankAccount").value = item[""];
+        // document.getElementById("txtBankName").value = item[""];
+        // document.getElementById("txtBranch").value = item["PositionName"];
+        document.getElementsByName("gender")[(item["Gender"])].checked = true;
 
-        console.log();
+        //Gán giá trị ngày 
+        let date = new Date(item["DateOfBirth"]);
+        //Lấy ra ngày
+        let day = date.getDate().toString().padStart(2, '0');
+        //Lấy ra tháng
+        let month = (date.getMonth() + 1).toString().padStart(2, '0');
+        //Lấy ra năm
+        let year = date.getFullYear();
+        document.getElementById("dateOfBirth").value = year + '-' + month + '-' + day;
+
+        date = new Date(item["IdentityDate"]);
+        //Lấy ra ngày
+        day = date.getDate().toString().padStart(2, '0');
+        //Lấy ra tháng
+        month = (date.getMonth() + 1).toString().padStart(2, '0');
+        //Lấy ra năm
+        year = date.getFullYear();
+
+        document.getElementById("dateOfIssue").value = year + '-' + month + '-' + day;
+        console.log(item["DateOfBirth"]);
     }
 }

@@ -157,14 +157,12 @@
                                 </tr> -->
                             </tbody>
                         </table>
-                        <div class="bgdroplist hidden">
-                            <div class="dropdownlist hidden">
-                                <ul>
-                                    <li><input class="btn-link" type="button" value="Nhân bản" /></li>
-                                    <li><input class="btn-link" type="button" value="Xóa" /></li>
-                                    <li><input class="btn-link" type="button" value="Ngừng sử dụng" /></li>
-                                </ul>
-                            </div>
+                        <div class="dropdownlist hidden">
+                            <ul>
+                                <li><input class="btn-link" type="button" value="Nhân bản" /></li>
+                                <li><input class="btn-link" type="button" value="Xóa" /></li>
+                                <li><input class="btn-link" type="button" value="Ngừng sử dụng" /></li>
+                            </ul>
                         </div>
                     </div>
                     <div class="paging">
@@ -230,9 +228,9 @@
                                 </div>
                             </div>
                             <div class="textfield">
-                                <label for="txtDepartment">Đơn vị <span class="color-red">*</span></label>
+                                <label for="cbbDepartment">Đơn vị <span class="color-red">*</span></label>
                                 <div class="combobox">
-                                    <div class="combobox__select">Phòng nhân sự</div>
+                                    <div id="cbbDepartment" class="combobox__select">Phòng nhân sự</div>
                                     <ul class="options hidden">
                                         <li class="option">Phòng nhân sự</li>
                                         <li class="option">Phòng hành chính</li>
@@ -259,12 +257,12 @@
                                     <label for="radioGender">Giới tính</label>
                                     <div id="radioGender" class="btn-radio">
                                         <div class="btn-radio__option">
-                                            <input type="radio" name="gender" value="Nam" checked />
-                                            <p>Nam</p>
+                                            <input type="radio" name="gender" checked />
+                                            <p>Nữ</p>
                                         </div>
                                         <div class="btn-radio__option">
                                             <input type="radio" name="gender" />
-                                            <p>Nữ</p>
+                                            <p>Nam</p>
                                         </div>
                                         <div class="btn-radio__option">
                                             <input type="radio" name="gender" />
