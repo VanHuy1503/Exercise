@@ -184,10 +184,17 @@ function clearErrorMessage(input, parentElement) {
 }
 
 //Hàm mở form thêm nhân viên
-function onOpenFormAdd() {
+async function onOpenFormAdd() {
     //HIện thị form nhập
-    document.getElementById("formEmployeeDetail").style.display = "block";
+    await fetch("https://apidemo.laptrinhweb.edu.vn/api/v1/Employees/NewEmployeeCode")
+        .then((response) => response.text())
+        .then((data) => {
+            document.getElementById("txtEmployeeCode").value = data
+        });
+    document.getElementById("cbbDepartment").value = "Phòng nhân sự";
     document.getElementById("txtEmployeeCode").disabled = false;
+    document.getElementById("formEmployeeDetail").style.display = "block";
+    // document.getElementById("txtEmployeeCode").value = xhr;;
 }
 
 //Hàm đóng form thêm nhân viên
@@ -227,7 +234,6 @@ class EmployeePage {
     //Lấy data bằng api
     loadData() {
         let loading = document.querySelector(".loading");
-        console.log(loading);
         loading.classList.remove("hidden");
         fetch("https://apidemo.laptrinhweb.edu.vn/api/v1/employees")
             .then(res => res.json())
@@ -235,9 +241,6 @@ class EmployeePage {
                 this.ListEmployee = data;
                 this.buildDataTable(data);
             })
-        console.log("aaa");
-
-
     }
     //Sử dụng data lấy từ api xây dựng bảng
     buildDataTable(data) {
@@ -452,7 +455,7 @@ class EmployeePage {
         document.getElementById("txtAddress").value = item["Address"];
         document.getElementById("txtMobilePhone").value = item["PhoneNumber"];
         document.getElementById("txtEmail").value = item["Email"];
-        document.getElementById("cbbDepartment").textContent = item["DepartmentName"];
+        document.getElementById("cbbDepartment").value = item["DepartmentName"];
         document.getElementById("btnStoreAndAdd").value = "Cất và Sửa";
         // document.getElementById("txtLandlinePhone").value = item[""];
         // document.getElementById("txtBankAccount").value = item[""];
