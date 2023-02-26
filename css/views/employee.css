@@ -132,3 +132,8 @@
 .searchbox:has(input:focus) {
     border-color: #50b83c;
 }
+
+.delete-popup {
+    width: 450px;
+    box-shadow: 0 0 4px rgba(23, 27, 42, 0.24);
+}

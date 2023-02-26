@@ -1,0 +1,28 @@
+input[type='radio'] {
+    accent-color: #50B83C;
+}
+
+input[type='radio']:after {
+
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    top: 1px;
+    left: 1px;
+    position: relative;
+    background-color: #fff;
+    content: '';
+    display: inline-block;
+    visibility: visible;
+    border: 3px solid white;
+    box-sizing: border-box;
+}
+
+input[type='radio']:checked:after {
+    position: relative;
+    background-color: #50B83C;
+    content: '';
+    display: inline-block;
+    visibility: visible;
+
+}

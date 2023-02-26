@@ -160,7 +160,7 @@
                         <div class="dropdownlist hidden">
                             <ul>
                                 <li><input class="btn-link" type="button" value="Nhân bản" /></li>
-                                <li><input class="btn-link" type="button" value="Xóa" /></li>
+                                <li><input id="btnDeleteEmployee" class="btn-link" type="button" value="Xóa" /></li>
                                 <li><input class="btn-link" type="button" value="Ngừng sử dụng" /></li>
                             </ul>
                         </div>
@@ -191,6 +191,7 @@
                         </div>
                     </div>
                 </div>
+                <object class="loading" data="/assets/img/loading.svg" type=""></object>
             </div>
         </div>
     </div>
@@ -230,7 +231,7 @@
                             <div class="textfield">
                                 <label for="cbbDepartment">Đơn vị <span class="color-red">*</span></label>
                                 <div class="combobox">
-                                    <div id="cbbDepartment" class="combobox__select">Phòng nhân sự</div>
+                                    <input id="cbbDepartment" class="combobox__select" value="Phòng nhân sự" />
                                     <ul class="options hidden">
                                         <li class="option">Phòng nhân sự</li>
                                         <li class="option">Phòng hành chính</li>
@@ -257,16 +258,16 @@
                                     <label for="radioGender">Giới tính</label>
                                     <div id="radioGender" class="btn-radio">
                                         <div class="btn-radio__option">
-                                            <input type="radio" name="gender" checked />
-                                            <p>Nữ</p>
+                                            <input type="radio" name="gender" value="female" />
+                                            <label for="female">Nữ</label>
                                         </div>
                                         <div class="btn-radio__option">
-                                            <input type="radio" name="gender" />
-                                            <p>Nam</p>
+                                            <input type="radio" name="gender" value="male" />
+                                            <label for="male">Nam</label>
                                         </div>
                                         <div class="btn-radio__option">
-                                            <input type="radio" name="gender" />
-                                            <p>Khác</p>
+                                            <input type="radio" name="gender" value="other" />
+                                            <label for="other">Khác</label>
                                         </div>
                                     </div>
                                 </div>
@@ -349,20 +350,24 @@
                 </div>
             </div>
         </div>
-        <div class="popup-warning" hidden>
-            <div class="shadow"></div>
-            <div class="popup">
-                <div class="popup__content">
-                    <div class="popup__text">
-                        <div class="icon warning-icon"></div>
-                        <p>Mã nhân viên &ltNV-0001&gt đã tồn tại trong hệ thống, vui lòng kiểm tra lại.</p>
-                    </div>
+        <div class="delete-popup popup hidden">
+            <input id="btnCloseDelete" class="icon popup__btn-close" type="button" value="" />
+            <div class="popup__title">
+                <div class="popup__title-text">Xóa thông tin nhân viên</div>
+            </div>
+            <div class="popup__content">
+                <div class="popup__text">
+                    Bạn có chắc chắn muốn xóa nhân viên này không
                 </div>
-                <div class="popup__footer">
-                    <div class="btn-pri">Đồng ý</div>
+            </div>
+            <div class="popup__footer">
+                <div>
+                    <input id="btnCancelDelete" class="btn-sub" type="button" value="Hủy" />
+                    <input id="btnDeleteConfirm" type="button" class="btn-pri backgroud-red" value="Xóa" />
                 </div>
             </div>
         </div>
+    </div>
     </div>
     <script type="module" src="/js/employee.js"></script>
     <script src="/js/combobox.js"></script>

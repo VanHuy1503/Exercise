@@ -1,29 +1,51 @@
 import Table from "./htable.js";
-window.onload = function () {
+import addEventForDeleteButton from "./deletebutton.js";
 
+window.onload = function () {
+    //Tạo các event cho trang web
     createEvents();
+    //Load data table
     new EmployeePage();
-    new Table();
+    // new Table(); 
 };
 
+//Tạo các sự kiện cho trang web
 function createEvents() {
     try {
-        let formElement = document.getElementById("formEmployeeDetail");
         document.getElementById("btnAddEmployee").addEventListener("click", onOpenFormAdd);
         document.getElementById("btnClose").addEventListener("click", onCloseFormAdd);
         document.getElementById("btnCancel").addEventListener("click", onCloseFormAdd);
 
         onCheckList();
 
-        // document.querySelector("bgdroplist").onclick = () => {
-        //     d
-        // }
-
         onValidator();
+
+        //tạo sự kiện cho nút xóa
+        addEventForDeleteButton();
+        //thêm tabindex cho form nhân viên
+        addTabIndex();
+
+
+        //Thêm sự kiện click load lại bảng
+        document.querySelector(".btn-refresh").onclick = () => {
+            document.querySelector("tbody").textContent = "";// xóa dữ liệu cũ
+            new EmployeePage(); //load dữ liệu mới
+        }
 
     } catch (error) {
         console.log(error);
     }
+}
+
+function addTabIndex() {
+    const form = document.getElementById("formEmployeeDetail");
+    const input = form.querySelector("#btnCancel");
+    input.addEventListener('keydown', (event) => {
+        if (event.key == 'Tab') {
+            event.preventDefault();
+            document.getElementById("txtEmployeeCode").focus();
+        }
+    });
 }
 
 function onValidator() {
@@ -34,12 +56,10 @@ function onValidator() {
         // });
         //-------------Kiểm tra dữ liệu hợp lệ--------------
 
-
-
         //Kiểm tra mã nhân viên//Mã không được bỏ trống
         document.getElementById("txtEmployeeCode").onblur = () => onValidateFieldEmpty("Mã nhân viên không được bỏ trống");
 
-        document.getElementById("txtEmployeeCode").onblur = () => onValidateFormat(/(([NV-])+([0-9]{4})\b)/, "Mã nhân viên không hợp lệ!");
+        document.getElementById("txtEmployeeCode").onblur = () => onValidateFormat(/(([NV-])+([0-9]{5})\b)/, "Mã nhân viên không hợp lệ!");
 
         document.getElementById("txtFullName").onblur = () => onValidateFieldEmpty("Tên không được bỏ trống");
 
@@ -68,6 +88,7 @@ function onValidator() {
     }
 }
 
+//Hàm kiểm tra dữ liệu ngày hợp lệ
 function onValidatorDate(message) {
     try {
         let input = event.currentTarget;
@@ -87,6 +108,7 @@ function onValidatorDate(message) {
     }
 }
 
+//Hàm kiểm tra định dạng dữ liệu nhập
 function onValidateFormat(format, message) {
     try {
         //Lấy dữ liệu
@@ -131,6 +153,7 @@ function onValidateFieldEmpty(message) {
     }
 }
 
+//Hàm hiển thị thông báo lỗi
 function displayErrorMessage(message, parentElement) {
     try {
         if (!parentElement.classList.contains("error-element")) {
@@ -147,6 +170,7 @@ function displayErrorMessage(message, parentElement) {
     }
 }
 
+//Hàm xóa thông báo lỗi
 function clearErrorMessage(input, parentElement) {
     try {
         parentElement.classList.remove("error-element");
@@ -159,11 +183,14 @@ function clearErrorMessage(input, parentElement) {
     }
 }
 
-
+//Hàm mở form thêm nhân viên
 function onOpenFormAdd() {
+    //HIện thị form nhập
     document.getElementById("formEmployeeDetail").style.display = "block";
     document.getElementById("txtEmployeeCode").disabled = false;
 }
+
+//Hàm đóng form thêm nhân viên
 function onCloseFormAdd() {
     document.getElementById("formEmployeeDetail").style.display = "none";
     let errorElemets = document.getElementById("formEmployeeDetail").querySelectorAll(".error-element");
@@ -176,11 +203,7 @@ function onCloseFormAdd() {
         el.value = null;
     })
 }
-
-function test() {
-    console.log("This is the test function!");
-}
-
+//Hàm tạo sự kiện click nút chọn tất cả
 function onCheckList() {
     let checkAll = document.getElementById('ckbAllEmp');
     let checkboxes = document.getElementsByName('emp');
@@ -195,20 +218,28 @@ function onCheckList() {
     }
 }
 //---------------------------------------------------------------------------------------------------------------------
-
+//Class dùng để load data table
 class EmployeePage {
     ListEmployee;
     constructor() {
         this.loadData();
     }
+    //Lấy data bằng api
     loadData() {
+        let loading = document.querySelector(".loading");
+        console.log(loading);
+        loading.classList.remove("hidden");
         fetch("https://apidemo.laptrinhweb.edu.vn/api/v1/employees")
             .then(res => res.json())
             .then(data => {
                 this.ListEmployee = data;
                 this.buildDataTable(data);
             })
+        console.log("aaa");
+
+
     }
+    //Sử dụng data lấy từ api xây dựng bảng
     buildDataTable(data) {
         try {
             let table = document.getElementById("tbEmployeeList");
@@ -232,6 +263,9 @@ class EmployeePage {
                 bodyTable.append(trElement);
             }
             this.addEventForDropList();
+            let loading = document.querySelector(".loading");
+
+            loading.classList.add("hidden");
         } catch (error) {
             console.log(error);
         }
@@ -315,7 +349,6 @@ class EmployeePage {
             else { //Nếu đang mở droplist bấm ra ngoài ẩn droplist
                 do {
                     if (input == dropList) {
-                        console.log("add1")
                         return;
                     }
                     input = input.parentNode;
@@ -325,7 +358,6 @@ class EmployeePage {
                     dropList.classList.add("hidden")
                 }
             }
-
         })
     }
 
@@ -426,27 +458,32 @@ class EmployeePage {
         // document.getElementById("txtBankAccount").value = item[""];
         // document.getElementById("txtBankName").value = item[""];
         // document.getElementById("txtBranch").value = item["PositionName"];
-        document.getElementsByName("gender")[(item["Gender"])].checked = true;
+        if (item["Gender"]) {
+            document.getElementsByName("gender")[(item["Gender"])].checked = true;
+        }
 
-        //Gán giá trị ngày 
-        let date = new Date(item["DateOfBirth"]);
-        //Lấy ra ngày
-        let day = date.getDate().toString().padStart(2, '0');
-        //Lấy ra tháng
-        let month = (date.getMonth() + 1).toString().padStart(2, '0');
-        //Lấy ra năm
-        let year = date.getFullYear();
-        document.getElementById("dateOfBirth").value = year + '-' + month + '-' + day;
+        if (item["DateOfBirth"]) {
+            //Gán giá trị ngày 
+            let date = new Date(item["DateOfBirth"]);
+            //Lấy ra ngày
+            let day = date.getDate().toString().padStart(2, '0');
+            //Lấy ra tháng
+            let month = (date.getMonth() + 1).toString().padStart(2, '0');
+            //Lấy ra năm
+            let year = date.getFullYear();
+            document.getElementById("dateOfBirth").value = year + '-' + month + '-' + day;
+        }
 
-        date = new Date(item["IdentityDate"]);
-        //Lấy ra ngày
-        day = date.getDate().toString().padStart(2, '0');
-        //Lấy ra tháng
-        month = (date.getMonth() + 1).toString().padStart(2, '0');
-        //Lấy ra năm
-        year = date.getFullYear();
+        if (item["IdentityDate"]) {
+            date = new Date(item["IdentityDate"]);
+            //Lấy ra ngày
+            day = date.getDate().toString().padStart(2, '0');
+            //Lấy ra tháng
+            month = (date.getMonth() + 1).toString().padStart(2, '0');
+            //Lấy ra năm
+            year = date.getFullYear();
 
-        document.getElementById("dateOfIssue").value = year + '-' + month + '-' + day;
-        console.log(item["DateOfBirth"]);
+            document.getElementById("dateOfIssue").value = year + '-' + month + '-' + day;
+        }
     }
 }

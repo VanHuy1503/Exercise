@@ -15,11 +15,12 @@
     width: 100%;
 }
 
-.content__title > b {
+.content__title>b {
     color: #1f1f20;
     font-size: 24px;
     line-height: 29px;
 }
+
 .content__body {
     position: absolute;
     top: 56px;
@@ -41,7 +42,9 @@
     column-gap: 12px;
 }
 
-.searchbox,.paging-box,.department{
+.searchbox,
+.paging-box,
+.department {
     display: flex;
     align-items: center;
     border-radius: 4px;
@@ -52,7 +55,7 @@
     border: 1px solid #E0E0E0;
 }
 
-.department{
+.department {
     display: flex;
     align-items: center;
     border-radius: 4px;
@@ -63,24 +66,29 @@
     border: 1px solid #E0E0E0;
 }
 
-.searchbox>input,.paging-box>select{
+.searchbox>input,
+.paging-box>select {
     border: none;
     flex: 1;
     outline: none;
 }
 
-.search-icon{
+.search-icon {
     background: url(/assets/img/Sprites.64af8f61.svg) no-repeat -88px -32px;
-	width: 22px;
-	height: 22px;
+    width: 22px;
+    height: 22px;
     border: none;
 }
 
 .btn-refresh {
-    background: url(/assets/img/Sprites.64af8f61.svg) no-repeat -420px -195px;
+    background: url(/assets/img/Sprites.64af8f61.svg) no-repeat -419px -195px;
     width: 36px;
     height: 36px;
     border: none;
+}
+
+.btn-refresh:hover {
+    background: url(/assets/img/Sprites.64af8f61.svg) no-repeat -1091px -83px
 }
 
 /* .btn-refresh:hover{
@@ -133,13 +141,13 @@ td {
     position: absolute;
 }
 
-.paging__left{
+.paging__left {
     height: 36px;
     display: flex;
     align-items: center;
 }
 
-.paging__right{
+.paging__right {
     height: 44px;
     display: flex;
     align-items: center;
@@ -147,7 +155,7 @@ td {
 }
 
 
-.pagingbox{
+.pagingbox {
     display: flex;
     align-items: center;
     border-radius: 4px;
@@ -158,28 +166,29 @@ td {
     border: 1px solid #E0E0E0;
 }
 
-.pagingbox-icon{
+.pagingbox-icon {
     background: url(/assets/img/Sprites.64af8f61.svg) no-repeat -559px -359px;
-	width: 16px;
-	height: 16px;
+    width: 16px;
+    height: 16px;
 }
 
-.paging-btn-before,.paging-btn-after{
+.paging-btn-before,
+.paging-btn-after {
     border: none;
     background-color: #fff;
-	height: 36px;
+    height: 36px;
     vertical-align: center;
 }
 
-.paging-btn-before{
-   color: #00000056;
+.paging-btn-before {
+    color: #00000056;
 }
 
-.number{
+.number {
     padding: 0 4px;
 }
 
-select{
+select {
     appearance: none;
     border: none;
     flex: 1;

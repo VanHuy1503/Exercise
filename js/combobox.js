@@ -10,9 +10,18 @@ comboboxs.forEach(function (el) {
         menuOptions.classList.toggle("hidden");
         combobox__btn.classList.toggle("rotate-180");
     };
+
+    selecteContent.addEventListener('focus', function () {
+        menuOptions.classList.remove("hidden");
+    })
+
+    selecteContent.addEventListener('blur', function () {
+        menuOptions.classList.add("hidden");
+    })
+
     for (const opt of options) {
         opt.onclick = function () {
-            selecteContent.innerText = event.target.textContent;
+            selecteContent.value = event.target.textContent;
             selecteContent.classList.toggle("border-focus");
             menuOptions.classList.toggle("hidden");
             combobox__btn.classList.toggle("rotate-180");
