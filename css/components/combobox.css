@@ -36,7 +36,6 @@
     background-color: #fff;
     padding: 0;
     border: 8px solid #fff;
-    height: 112px;
     animation: showSelect step-end 0.3s;
     overflow: auto;
     box-sizing: border-box;
@@ -65,6 +64,7 @@
     from {
         transform: scale(0);
     }
+
     to {
         transform: scale(1);
     }

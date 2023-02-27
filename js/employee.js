@@ -1,7 +1,10 @@
 import Table from "./htable.js";
 import addEventForDeleteButton from "./deletebutton.js";
+import Combobox from "./scombobox.js";
+
 
 window.onload = function () {
+    new Combobox();
     //Tạo các event cho trang web
     createEvents();
     //Load data table
@@ -191,7 +194,7 @@ async function onOpenFormAdd() {
         .then((data) => {
             document.getElementById("txtEmployeeCode").value = data
         });
-    document.getElementById("cbbDepartment").value = "Phòng nhân sự";
+
     document.getElementById("txtEmployeeCode").disabled = false;
     document.getElementById("formEmployeeDetail").style.display = "block";
     // document.getElementById("txtEmployeeCode").value = xhr;;
@@ -455,7 +458,7 @@ class EmployeePage {
         document.getElementById("txtAddress").value = item["Address"];
         document.getElementById("txtMobilePhone").value = item["PhoneNumber"];
         document.getElementById("txtEmail").value = item["Email"];
-        document.getElementById("cbbDepartment").value = item["DepartmentName"];
+        document.getElementById("cbbDepartment").querySelector("input").value = item["DepartmentName"];
         document.getElementById("btnStoreAndAdd").value = "Cất và Sửa";
         // document.getElementById("txtLandlinePhone").value = item[""];
         // document.getElementById("txtBankAccount").value = item[""];
