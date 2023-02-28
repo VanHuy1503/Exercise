@@ -192,7 +192,9 @@ async function onOpenFormAdd() {
     await fetch("https://apidemo.laptrinhweb.edu.vn/api/v1/Employees/NewEmployeeCode")
         .then((response) => response.text())
         .then((data) => {
-            document.getElementById("txtEmployeeCode").value = data
+            if (data) {
+                document.getElementById("txtEmployeeCode").value = data
+            }
         });
 
     document.getElementById("txtEmployeeCode").disabled = false;
@@ -243,6 +245,8 @@ class EmployeePage {
             .then(data => {
                 this.ListEmployee = data;
                 this.buildDataTable(data);
+                document.getElementById("count").textContent = data.length;
+                console.log(data.length);
             })
     }
     //Sử dụng data lấy từ api xây dựng bảng
@@ -268,6 +272,8 @@ class EmployeePage {
                 }
                 bodyTable.append(trElement);
             }
+
+            this.addEventForTdCheck();
             this.addEventForDropList();
             let loading = document.querySelector(".loading");
 
@@ -289,7 +295,6 @@ class EmployeePage {
         checkItem.append(checkMark);
         let tdCheck = document.createElement("td");
         tdCheck.append(checkItem);
-        tdCheck.addEventListener("click", this.addEventForTdCheck);
         return tdCheck;
     }
     //Tạo ô chức năng

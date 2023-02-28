@@ -107,8 +107,9 @@
                 <div class="content__body">
                     <div class="table__top">
                         <div class="searchbox">
-                            <input type="text" placeholder="Tìm theo mã, tên nhân viên" />
-                            <div class="search-icon"></div>
+                            <input type="text" placeholder="Tìm theo mã, tên nhân viên" autocomplete="off" />
+                            <div class=" search-icon">
+                            </div>
                         </div>
                         <input class="btn-refresh" type="button" value="" />
                     </div>
@@ -166,7 +167,7 @@
                         </div>
                     </div>
                     <div class="paging">
-                        <div class="paging__left">Tổng số: <b>1035</b> bản ghi</div>
+                        <div class="paging__left">Tổng số:&nbsp<b id="count">1035</b>&nbspbản ghi</div>
                         <div class="paging__right">
                             <div class="combobox paging__combobox">
                                 <div class="combobox__select">20 bản ghi trên 1 trang</div>
@@ -220,23 +221,24 @@
                             <div class="m-row">
                                 <div class="textfield">
                                     <label for="txtEmployeeCode">Mã <span class="color-red">*</span></label>
-                                    <input id="txtEmployeeCode" class="required" type="text"
-                                        placeholder="Mã nhân viên" />
+                                    <input id="txtEmployeeCode" class="required" type="text" placeholder="Mã nhân viên"
+                                        autocomplete="off" />
                                 </div>
-                                <div class="textfield">
+                                <div class=" textfield">
                                     <label for="txtFullName">Tên <span class="color-red">*</span></label>
-                                    <input id="txtFullName" class="required" type="text" placeholder="Tên" />
+                                    <input id="txtFullName" class="required" type="text" placeholder="Tên"
+                                        autocomplete="off" />
                                 </div>
                             </div>
                             <div class="textfield">
                                 <label for="cbbDepartment">Đơn vị <span class="color-red">*</span></label>
                                 <scombobox id="cbbDepartment"
                                     api="https://apidemo.laptrinhweb.edu.vn/api/v1/Departments"
-                                    modelName="DepartmentName" placeholder="Nhập phòng ban" />
+                                    modelName="DepartmentName" placeholder="Nhập phòng ban" autocomplete="off" />
                             </div>
                             <div class="textfield">
                                 <label for="txtPosition">Chức danh</label>
-                                <input id="txtPosition" type="text" placeholder="Chức danh" />
+                                <input id="txtPosition" type="text" placeholder="Chức danh" autocomplete="off" />
                             </div>
                         </div>
                         <div class="form-group form-info-right">
@@ -267,43 +269,46 @@
                                 <div>
                                     <div class="textfield">
                                         <label for="txtIdentityCard" title="Số chứng minh nhân dân">Số CMND</label>
-                                        <input id="txtIdentityCard" type="text" placeholder="Số CMND" />
+                                        <input id="txtIdentityCard" type="text" placeholder="Số CMND"
+                                            autocomplete="off" />
                                     </div>
                                 </div>
                                 <div class="textfield">
                                     <label for="dateOfIssue">Ngày cấp</label>
-                                    <input id="dateOfIssue" type="date" name="" id="" />
+                                    <input id="dateOfIssue" type="date" name="" id="" autocomplete="off" />
                                 </div>
                             </div>
                             <div class="textfield">
                                 <label for="txtIssuePlace">Nơi cấp</label>
-                                <input id="txtIssuePlace" type="text" placeholder="Nơi cấp " />
+                                <input id="txtIssuePlace" type="text" placeholder="Nơi cấp " autocomplete="off" />
                             </div>
                         </div>
                         <div class="form-group form-info-bottom">
                             <div class="form-group-row">
                                 <div class="textfield">
                                     <label for="txtAddress">Địa chỉ</label>
-                                    <input id="txtAddress" type="text" placeholder="Địa chỉ" />
+                                    <input id="txtAddress" type="text" placeholder="Địa chỉ" autocomplete="off" />
                                 </div>
                             </div>
                             <div class="form-group-row">
                                 <div class="item-contact">
                                     <div class="textfield">
                                         <label for="txtMobilePhone" title="Số điện thoại di động">ĐT di động</label>
-                                        <input id="txtMobilePhone" type="text" placeholder="Đt di động" />
+                                        <input id="txtMobilePhone" type="text" placeholder="Đt di động"
+                                            autocomplete="off" />
                                     </div>
                                 </div>
                                 <div class="item-contact">
                                     <div class="textfield">
                                         <label for="txtLandlinePhone" title="Số điện thoại cố định">ĐT cố định</label>
-                                        <input id="txtLandlinePhone" type="text" placeholder="ĐT cố định" />
+                                        <input id="txtLandlinePhone" type="text" placeholder="ĐT cố định"
+                                            autocomplete="off" />
                                     </div>
                                 </div>
                                 <div class="item-contact">
                                     <div class="textfield">
                                         <label for="txtEmail">Email</label>
-                                        <input id="txtEmail" type="text" placeholder="Email" />
+                                        <input id="txtEmail" type="text" placeholder="Email" autocomplete="off" />
                                     </div>
                                 </div>
                             </div>
@@ -311,19 +316,21 @@
                                 <div class="item-contact">
                                     <div class="textfield">
                                         <label for="txtBankAccount">Tài khoản ngân hàng</label>
-                                        <input id="txtBankAccount" type="text" placeholder="Tài khoản ngân hàng" />
+                                        <input id="txtBankAccount" type="text" placeholder="Tài khoản ngân hàng"
+                                            autocomplete="off" />
                                     </div>
                                 </div>
                                 <div class="item-contact">
                                     <div class="textfield">
                                         <label for="txtBankName">Tên ngân hàng</label>
-                                        <input id="txtBankName" type="text" placeholder="Tên ngân hàng" />
+                                        <input id="txtBankName" type="text" placeholder="Tên ngân hàng"
+                                            autocomplete="off" />
                                     </div>
                                 </div>
                                 <div class="item-contact">
                                     <div class="textfield">
                                         <label for="txtBranch">Chi nhánh</label>
-                                        <input id="txtBranch" type="text" placeholder="Chi nhánh" />
+                                        <input id="txtBranch" type="text" placeholder="Chi nhánh" autocomplete="off" />
                                     </div>
                                 </div>
                             </div>

@@ -74,10 +74,10 @@ class Combobox {
     // Thêm option cho combobox
     buildOptionElement(optionsElement, inputSelected, searchtext) {
         try {
-            optionsElement.textContent = ""
+            optionsElement.textContent = "";
             for (const item of this.Departments) {
-
-                if (item["DepartmentName"].toLowerCase().includes(searchtext.toLowerCase())) {
+                searchtext = this.removeAccents(searchtext.toLowerCase()).trim();
+                if (this.removeAccents(item["DepartmentName"].toLowerCase()).includes(searchtext)) {
                     let optionForCombobox = document.createElement("li");
                     optionForCombobox.classList.add("option");
                     optionForCombobox.textContent = item["DepartmentName"];
@@ -92,6 +92,29 @@ class Combobox {
 
         }
 
+    }
+    removeAccents(str) {
+        var AccentsMap = [
+            "aàảãáạăằẳẵắặâầẩẫấậ",
+            "AÀẢÃÁẠĂẰẲẴẮẶÂẦẨẪẤẬ",
+            "dđ", "DĐ",
+            "eèẻẽéẹêềểễếệ",
+            "EÈẺẼÉẸÊỀỂỄẾỆ",
+            "iìỉĩíị",
+            "IÌỈĨÍỊ",
+            "oòỏõóọôồổỗốộơờởỡớợ",
+            "OÒỎÕÓỌÔỒỔỖỐỘƠỜỞỠỚỢ",
+            "uùủũúụưừửữứự",
+            "UÙỦŨÚỤƯỪỬỮỨỰ",
+            "yỳỷỹýỵ",
+            "YỲỶỸÝỴ"
+        ];
+        for (var i = 0; i < AccentsMap.length; i++) {
+            var re = new RegExp('[' + AccentsMap[i].substr(1) + ']', 'g');
+            var char = AccentsMap[i][0];
+            str = str.replace(re, char);
+        }
+        return str;
     }
 
     async loadData(api) {
